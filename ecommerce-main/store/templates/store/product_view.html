@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+<img src="{{ product.imageURL }}" alt="" style="width: 300px; height: 400px;">
+    </div>
+    <br>
+    <div class="row">
+        <button data-product="{{product.id}}" data-action="add" class="btn add-btn update-cart"
+        style="background-color: #8c5d4f; color: white; width: 15rem;">Add To Cart</button>    </div>
+</div>
+<div class="col-md-8">
+    <h3>{{product.name}}</h3>
+    <p style="font-size: 25px;"><b>UGX {{product.price}}</b></p>
+    <br>
+    <h5>Key Features:</h5>
+    <ul>
+        {% for i in feature %}
+        <li>{{i.feature}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+</div>
+</div>
+</div>
+{% endblock content %}
+
+
+

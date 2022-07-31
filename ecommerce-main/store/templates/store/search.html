@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% block content %}
+{% block title %} Searched Result {% endblock %}
+{% if search %}
+
+<div class="container mt-2 mb-3">
+
+    <div class="row">
+      {% for product in products %}
+        <div class="col-lg-4">
+          <img class="thumbnail" src="{{ product.imageURL }}">
+            <div class="box-element product">
+              <h6><strong>{{ product.name }}</strong></h6>
+              <hr>
+              <!--The class update-cart(below) is to be used for javascript -->
+              <button data-product={{product.id}} data-action=add
+                class="btn btn-outline-secondary add-btn update-cart">Add to Cart
+              </button>
+              <a href="/product_view/{{product.id}}/" class="btn btn-outline-secondary">View</a>
+              <h4 style="display: inline-block; float: right">
+                <strong>&#8377;{{ product.price|floatformat:2 }}</strong>
+              </h4>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% else %}
+<h1>You forgot to search</h1>
+{% endif %}
+{% endblock content %}
